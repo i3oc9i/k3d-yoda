@@ -10,7 +10,7 @@ servers: 1
 agents: 1  
 
 kubeAPI: 
-  host: "k3d-yoda.local" 
+  host: "k3d.yoda.local" 
   hostIP: "127.0.0.3" 
   hostPort: "6445"
 
@@ -21,7 +21,7 @@ hostAliases:
 
 registries: 
   create: 
-    name: registry-yoda.local
+    name: registry.yoda.local
     host: "127.0.0.3"
     hostPort: "5000"
 

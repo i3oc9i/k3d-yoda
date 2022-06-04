@@ -7,11 +7,8 @@ all: help
 
 k3d-setup:
 	k3d cluster create $(KLUSTER_ID) --config ./k3d/config.yaml
-	k3d kubeconfig get $(KLUSTER_ID) > .kube-config
-	@echo ""
-	@echo "please add the following lines to /etc/hosts"
-	@echo "127.0.0.3       k3d-yoda.local"
-	@echo "127.0.0.3       registry-yoda.local"
+	kubectl cluster-info
+	kubectl get node -o wide
 
 k3d-start:
 	k3d cluster start $(KLUSTER_ID) 
