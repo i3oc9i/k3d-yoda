@@ -11,8 +11,8 @@ agents: 1
 
 kubeAPI: 
   host: "k3d.yoda.local" 
-  hostIP: "127.0.0.3" 
-  hostPort: "6445"
+  hostIP: "127.1.0.2" 
+  hostPort: "443"
 
 hostAliases: 
   - ip: 1.2.3.4
@@ -22,11 +22,14 @@ hostAliases:
 registries: 
   create: 
     name: registry.yoda.local
-    host: "127.0.0.3"
+    host: "127.1.0.3"
     hostPort: "5000"
 
 ports:
-  - port: 8003:80 
+  - port: 127.1.0.1:80:80 
+    nodeFilters:
+      - loadbalancer
+  - port: 127.1.0.1:443:433
     nodeFilters:
       - loadbalancer
 
@@ -34,6 +37,9 @@ env:
   - envVar: NODE_TYPE=agent
     nodeFilters:
       - agent:0
+  - envVar: NODE_TYPE=master
+    nodeFilters:
+      - server:0
 
 options:
   k3d: 

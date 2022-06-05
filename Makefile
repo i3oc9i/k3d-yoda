@@ -1,7 +1,9 @@
 SHELL := /bin/bash
 
-KLUSTER_ID  = yoda
-REGISTRY_ID = registry-yoda.local:5000
+KLUSTER_NAME = yoda
+
+KLUSTER_URL  = k3d-yoda.local
+REGISTRY_URL = registry-yoda.local:5000
 
 all: help
 
